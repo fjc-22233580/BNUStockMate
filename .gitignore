@@ -27,6 +27,7 @@
 ipch/
 obj/
 .vs/
+.idea/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
