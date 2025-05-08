@@ -24,7 +24,7 @@ public abstract class ProductBase : IProduct
     
     public bool IsLowStock => Quantity >= _minimumQuantity;
     public double UnitPrice { get; }
-    public double GetTotalValue  => UnitPrice * Quantity;
+    public double TotalValue  => UnitPrice * Quantity;
     
     public void AdjustStock(int amount)
     {
