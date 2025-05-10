@@ -43,7 +43,7 @@ public interface IProduct
     /// <summary>
     /// Gets the total value of this product.
     /// </summary>
-    double TotalValue { get; }
+    double StockTotalValue { get; }
     
     /// <summary>
     /// Changes the stock for this product

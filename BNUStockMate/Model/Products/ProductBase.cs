@@ -5,10 +5,12 @@ namespace BNUStockMate.Model.Products;
 public abstract class ProductBase : IProduct
 {
     private readonly int _minimumQuantity;
+    private readonly double _margin;
 
-    protected ProductBase(string sku, string name, string description, string modelNumber, double unitPrice, int minimumQuantity)
+    protected ProductBase(string sku, string name, string description, string modelNumber, double unitPrice, int minimumQuantity, double margin)
     {
         _minimumQuantity = minimumQuantity;
+        _margin = margin;
         Sku = sku;
         Name = name;
         Description = description;
@@ -24,7 +26,9 @@ public abstract class ProductBase : IProduct
     
     public bool IsLowStock => Quantity >= _minimumQuantity;
     public double UnitPrice { get; }
-    public double TotalValue  => UnitPrice * Quantity;
+    public double StockTotalValue  => UnitPrice * Quantity;
+    
+    public double RetailPrice => UnitPrice * _margin;
     
     public void AdjustStock(int amount)
     {

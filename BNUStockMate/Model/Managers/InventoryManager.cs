@@ -32,7 +32,7 @@ public class InventoryManager
         {
             if (_inventory.Count > 0)
             {
-                return _inventory.Sum(x => x.TotalValue);
+                return _inventory.Sum(x => x.StockTotalValue);
             }
             return 0;
         }
