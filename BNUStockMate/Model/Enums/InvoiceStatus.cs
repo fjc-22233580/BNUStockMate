@@ -3,7 +3,7 @@ namespace BNUStockMate.Model.Enums;
 public enum InvoiceStatus
 {
     Draft,
-    Send,
+    Sent,
     Paid,
     Overdue
 }

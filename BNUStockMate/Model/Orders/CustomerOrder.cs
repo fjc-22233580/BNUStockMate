@@ -6,8 +6,9 @@ namespace BNUStockMate.Model.Orders;
 public class CustomerOrder
 {
 
-    public CustomerOrder(Customer customer, DateTime orderDate, List<OrderLine> orderLines)
+    public CustomerOrder(int orderNumber, Customer customer, DateTime orderDate, List<OrderLine> orderLines)
     {
+        OrderNumber = orderNumber;
         Customer = customer;
         OrderDate = orderDate;
         OrderLines = orderLines;
@@ -15,7 +16,8 @@ public class CustomerOrder
         // Default state
         OrderState = OrderState.Created;
     }
-    
+
+    public int OrderNumber { get; }
     public Customer Customer { get; }
     public DateTime OrderDate { get; }
     public List<OrderLine> OrderLines { get; }
