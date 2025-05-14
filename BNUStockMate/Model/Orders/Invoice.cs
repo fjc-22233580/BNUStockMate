@@ -20,6 +20,14 @@ public class Invoice
     }
     
     public bool IsPaid => _paidDate != null;
+
+    public double SalesValue
+    {
+        get
+        {
+            return _order.OrderLines.Sum(o => o.LineValue);
+        }
+    }
     
     public InvoiceStatus Status { get; private set; }
 
