@@ -1,7 +1,7 @@
-﻿namespace BNUStockMate;
+﻿namespace BNUStockMateModel;
 
 /// <summary>
-/// Entry point into BNUStockMate
+/// Entry point into BNUStockMateModel
 /// </summary>
 public static class Program
 {

@@ -1,4 +1,4 @@
-namespace BNUStockMate.Model.Info;
+namespace BNUStockMateModel.Model.Info;
 
 public class Customer
 {

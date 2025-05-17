@@ -1,4 +1,4 @@
-namespace BNUStockMate.Model.Enums;
+namespace BNUStockMateModel.Model.Enums;
 
 public enum InvoiceStatus
 {

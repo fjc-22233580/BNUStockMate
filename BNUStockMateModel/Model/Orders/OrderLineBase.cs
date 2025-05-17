@@ -1,6 +1,6 @@
-﻿using BNUStockMate.Model.Products;
+﻿using BNUStockMateModel.Model.Products;
 
-namespace BNUStockMate.Model.Orders;
+namespace BNUStockMateModel.Model.Orders;
 
 public abstract class OrderLineBase
 {

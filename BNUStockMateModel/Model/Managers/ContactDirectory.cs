@@ -1,6 +1,6 @@
-using BNUStockMate.Model.Info;
+using BNUStockMateModel.Model.Info;
 
-namespace BNUStockMate.Model.Managers;
+namespace BNUStockMateModel.Model.Managers;
 
 public class ContactDirectory
 {

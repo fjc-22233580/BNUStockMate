@@ -1,7 +1,7 @@
-﻿using BNUStockMate.Model.Enums;
-using BNUStockMate.Model.Info;
+﻿using BNUStockMateModel.Model.Enums;
+using BNUStockMateModel.Model.Info;
 
-namespace BNUStockMate.Model.Orders;
+namespace BNUStockMateModel.Model.Orders;
 
 public class Invoice
 {

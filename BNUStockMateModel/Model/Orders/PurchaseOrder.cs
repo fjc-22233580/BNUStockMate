@@ -1,6 +1,6 @@
-﻿using BNUStockMate.Model.Info;
+﻿using BNUStockMateModel.Model.Info;
 
-namespace BNUStockMate.Model.Orders;
+namespace BNUStockMateModel.Model.Orders;
 
 public class PurchaseOrder
 {

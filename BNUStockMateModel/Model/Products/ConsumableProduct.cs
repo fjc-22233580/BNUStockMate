@@ -1,4 +1,4 @@
-namespace BNUStockMate.Model.Products;
+namespace BNUStockMateModel.Model.Products;
 
 public class ConsumableProduct : ProductBase
 {
