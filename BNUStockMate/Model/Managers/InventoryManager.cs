@@ -25,18 +25,9 @@ public class InventoryManager
             return 0;
         }
     }
-
-    public double TotalStockValue
-    {
-        get
-        {
-            if (_inventory.Count > 0)
-            {
-                return _inventory.Sum(x => x.TotalCostValue);
-            }
-            return 0;
-        }
-    }
+    
+    public IReadOnlyList<ProductBase> Inventory => _inventory;
+    public IReadOnlyList<ProductBase> LowStockInventory => _inventory.Where(x => x.IsLowStock).ToList();
 
     /// <summary>
     /// 
@@ -79,7 +70,7 @@ public class InventoryManager
     /// </summary>
     /// <param name="sku"></param>
     /// <returns></returns>
-    public ProductBase GetProduct(string sku)
+    public ProductBase? FindBySku(string sku)
     {
         return _inventory.FirstOrDefault(x => x.Sku == sku);
     }

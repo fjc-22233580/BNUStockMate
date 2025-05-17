@@ -2,18 +2,19 @@ namespace BNUStockMate.Model.Info;
 
 public class Customer
 {
-    private readonly Guid _id;
     private readonly string _name;
     private readonly string _email;
     private readonly string _phone;
     private readonly string _address;
 
-    public Customer(Guid id, string name, string email, string phone, string address)
+    public Customer(string id, string name, string email, string phone, string address)
     {
-        _id = id;
+        Id = id;
         _name = name;
         _email = email;
         _phone = phone;
         _address = address;
     }
+    
+    public string Id { get; }
 }

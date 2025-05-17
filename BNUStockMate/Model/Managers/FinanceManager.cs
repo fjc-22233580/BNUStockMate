@@ -4,29 +4,24 @@ namespace BNUStockMate.Model.Managers;
 
 public class FinanceManager
 {
-    private List<Invoice> _invoices = new List<Invoice>();
-    private List<PurchaseOrder> _orders = new List<PurchaseOrder>();
+    private double _totalExpenses = 0;
+    private double _totalSales = 0;
+    
     public FinanceManager()
     {
         
     }
-
-    private double TotalStockPurchaseCost
-    {
-        get
-        {
-            return _orders.Sum(o => o.TotalCost);
-        }
-    }
-
-    private double TotalSalesRevenue
-    {
-        get
-        {
-            return _invoices.Sum(x => x.SalesValue);
-        }
-    }
     
     
+
+    public void RecordPurchaseOrder(double amount)
+    {
+        _totalExpenses += amount;
+    }
+
+    public void RecordSale(double amount)
+    {
+        _totalSales += amount;
+    }
     
 }

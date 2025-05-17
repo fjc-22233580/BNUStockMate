@@ -25,7 +25,7 @@ public class Invoice
     {
         get
         {
-            return _order.OrderLines.Sum(o => o.LineValue);
+            return _order.OrderLines.Sum(o => o.LineTotal);
         }
     }
     

@@ -22,6 +22,7 @@ public abstract class ProductBase : IProduct
     public string Name { get; }
     public string Description { get; }
     public string ModelNumber { get; }
+    
     public int Quantity { get; private set; }
     
     public bool IsLowStock => Quantity >= _minimumQuantity;
