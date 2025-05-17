@@ -1,5 +1,4 @@
-﻿using BNUStockMate.Model.Info;
-using BNUStockMate.Model.Managers;
+﻿using BNUStockMate.Model.Managers;
 using BNUStockMate.Model.Orders;
 
 namespace BNUStockMate.Model;
