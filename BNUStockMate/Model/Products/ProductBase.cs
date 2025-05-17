@@ -1,6 +1,6 @@
-using BNUStockMateModel.Model.Interfaces;
+using BNUStockMate.Model.Interfaces;
 
-namespace BNUStockMateModel.Model.Products;
+namespace BNUStockMate.Model.Products;
 
 public abstract class ProductBase : IProduct
 {

@@ -1,4 +1,4 @@
-namespace BNUStockMateModel.Model.Enums;
+namespace BNUStockMate.Model.Enums;
 
 public enum OrderState
 {

@@ -1,8 +1,7 @@
-﻿using BNUStockMateModel.Model.Info;
-using BNUStockMateModel.Model.Managers;
-using BNUStockMateModel.Model.Orders;
+﻿using BNUStockMate.Model.Managers;
+using BNUStockMate.Model.Orders;
 
-namespace BNUStockMateModel.Model;
+namespace BNUStockMate.Model;
 
 public class WarehouseSystem
 {

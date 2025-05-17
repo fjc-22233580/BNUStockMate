@@ -1,6 +1,6 @@
-using BNUStockMateModel.Model.Products;
+using BNUStockMate.Model.Products;
 
-namespace BNUStockMateModel.Model.Managers;
+namespace BNUStockMate.Model.Managers;
 
 public class InventoryManager
 {

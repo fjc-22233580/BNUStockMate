@@ -1,4 +1,4 @@
-namespace BNUStockMateModel.Model.Interfaces;
+namespace BNUStockMate.Model.Interfaces;
 
 /// <summary>
 /// Interface which provides common properties and functionality for all products.

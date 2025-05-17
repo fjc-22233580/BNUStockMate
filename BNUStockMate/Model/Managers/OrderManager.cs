@@ -1,9 +1,8 @@
-using BNUStockMateModel.Model.Products;
-using BNUStockMateModel.Model.Enums;
-using BNUStockMateModel.Model.Info;
-using BNUStockMateModel.Model.Orders;
+using BNUStockMate.Model.Enums;
+using BNUStockMate.Model.Info;
+using BNUStockMate.Model.Orders;
 
-namespace BNUStockMateModel.Model.Managers;
+namespace BNUStockMate.Model.Managers;
 
 public class OrderManager
 {

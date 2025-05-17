@@ -1,6 +1,4 @@
-﻿using BNUStockMateModel.Model.Orders;
-
-namespace BNUStockMateModel.Model.Managers;
+﻿namespace BNUStockMate.Model.Managers;
 
 public class FinanceManager
 {
