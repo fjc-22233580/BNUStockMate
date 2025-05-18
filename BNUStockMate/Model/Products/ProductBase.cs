@@ -25,7 +25,7 @@ public abstract class ProductBase : IProduct
     
     public int Quantity { get; private set; }
     
-    public bool IsLowStock => Quantity >= _minimumQuantity;
+    public bool IsLowStock => Quantity <= _minimumQuantity;
     public double UnitPrice { get; }
     public double TotalCostValue  => UnitPrice * Quantity;
     

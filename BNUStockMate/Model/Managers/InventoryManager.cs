@@ -11,7 +11,7 @@ public class InventoryManager
     
     public InventoryManager()
     {
-        
+        _inventory.Add(new ConsumableProduct("123", "Lynx", "Stops smells", "Lynx-123", 12.2, 10, 0.1 ,DateTime.Now, "12we4r65"));
     }
 
     public double TotalStockCount
@@ -26,8 +26,9 @@ public class InventoryManager
         }
     }
     
-    public IReadOnlyList<ProductBase> Inventory => _inventory;
-    public IReadOnlyList<ProductBase> LowStockInventory => _inventory.Where(x => x.IsLowStock).ToList();
+    public List<ProductBase> Inventory => _inventory;
+
+    public List<ProductBase> LowStockInventory => _inventory.Where(x => x.IsLowStock).ToList();
 
     /// <summary>
     /// 

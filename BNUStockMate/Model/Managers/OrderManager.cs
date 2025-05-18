@@ -35,7 +35,7 @@ public class OrderManager
     }
 
 
-    public IReadOnlyList<CustomerOrder> GetFilteredOrder(OrderState state)
+    public List<CustomerOrder> GetFilteredOrder(OrderState state)
     {
         return _customerOrders.Where(order => order.OrderState == state).ToList();
     }

@@ -6,6 +6,14 @@ public class ContactDirectory
 {
     private readonly List<Supplier> _suppliers = new List<Supplier>();
     private readonly List<Customer> _customers = new List<Customer>();
+    public List<Customer> Customers => _customers;
+    public List<Supplier> Suppliers => _suppliers;
+
+    public ContactDirectory()
+    {
+        _suppliers.Add(new Supplier("001", "Supply Co1", "bob@email.com", "0159-87946"));
+        _customers.Add(new Customer("002", "BNU", "bnu@bnu.com", "5916-654789", "Boulevard Way"));
+    }
 
     public void AddCustomer(Customer customer)
     {

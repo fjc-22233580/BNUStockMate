@@ -15,7 +15,9 @@ public class WarehouseSystem
         
     }
     
-    
+    public InventoryManager InventoryManager => _inventoryManager;
+    public ContactDirectory ContactDirectory => _contactDirectory;
+
     public void CreateCustomerOrder(string customerId, Dictionary<string, int> productQtyMap)
     {
         // Find supplier

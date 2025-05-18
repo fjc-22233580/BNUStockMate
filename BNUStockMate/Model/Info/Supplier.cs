@@ -16,4 +16,7 @@ public class Supplier
     }
     
     public string Id => _id;
+    public string Name => _name;
+    public string Email => _email;
+    public string Phone => _phone;
 }
