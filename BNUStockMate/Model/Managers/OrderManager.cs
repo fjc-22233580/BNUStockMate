@@ -1,7 +1,6 @@
 using BNUStockMate.Model.Enums;
 using BNUStockMate.Model.Info;
 using BNUStockMate.Model.Orders;
-using BNUStockMate.Model.Products;
 
 namespace BNUStockMate.Model.Managers;
 
