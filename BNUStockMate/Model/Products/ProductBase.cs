@@ -25,7 +25,9 @@ public abstract class ProductBase : IProduct
     
     public int Quantity { get; private set; }
     
-    public bool IsLowStock => Quantity >= _minimumQuantity;
+    public bool HasStock => Quantity >= _minimumQuantity;
+    public bool IsOutOfStock => Quantity == 0;
+    
     public double UnitPrice { get; }
     public double TotalCostValue  => UnitPrice * Quantity;
     
@@ -34,5 +36,10 @@ public abstract class ProductBase : IProduct
     public void AdjustStock(int amount)
     {
         Quantity += amount;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} | {Description}";
     }
 }

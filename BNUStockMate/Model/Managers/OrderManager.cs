@@ -14,19 +14,23 @@ public class OrderManager
         
     }
 
-    public void CreateCustomerOrder(Customer customer, List<OrderLine>  products)
+    public CustomerOrder CreateCustomerOrder(Customer customer, List<OrderLine>  products)
     {
         int orderNumber = _customerOrders.Count + 1;
         var orderDate = DateTime.Now;
-        _customerOrders.Add(new CustomerOrder(orderNumber, customer, orderDate,products));
+        var customerOrder = new CustomerOrder(orderNumber, customer, orderDate,products);
+        return customerOrder;
     }
+    
+    
 
-    public void CreatePurchaseOrder(Supplier supplier, List<PurchaseOrderLine> products)
+    public PurchaseOrder CreatePurchaseOrder(Supplier supplier, List<PurchaseOrderLine> products)
     {
         int orderNumber = _purchaseOrders.Count + 1;
         var orderDate = DateTime.Now;
-        _purchaseOrders.Add(new PurchaseOrder(orderNumber, supplier, orderDate, products));
-        
+        var purchaseOrder = new PurchaseOrder(orderNumber, supplier, orderDate, products);
+        _purchaseOrders.Add(purchaseOrder);
+        return purchaseOrder;
     }
 
     public CustomerOrder? FindCustomerOrderById(int orderNumber)
@@ -38,5 +42,10 @@ public class OrderManager
     public IReadOnlyList<CustomerOrder> GetFilteredOrder(OrderState state)
     {
         return _customerOrders.Where(order => order.OrderState == state).ToList();
+    }
+
+    public void AddCustomerOrder(CustomerOrder order)
+    {
+        _customerOrders.Add(order);
     }
 }

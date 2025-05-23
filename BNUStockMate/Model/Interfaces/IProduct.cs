@@ -33,7 +33,7 @@ public interface IProduct
     /// <summary>
     /// True if this product is low in stock, otherwise false.
     /// </summary>
-    bool IsLowStock { get; }
+    bool HasStock { get; }
     
     /// <summary>
     /// Gets the unit price.

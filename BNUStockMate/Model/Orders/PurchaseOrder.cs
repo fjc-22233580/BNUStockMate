@@ -20,6 +20,7 @@ public class PurchaseOrder
     public DateTime DeliveryDate { get; }
 
     public bool IsDelivered { get; set; }
+    
     public double OrderTotal => OrderLines.Sum(o => o.LineTotal);
-
+    
 }

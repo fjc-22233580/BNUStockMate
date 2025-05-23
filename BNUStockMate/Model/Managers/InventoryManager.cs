@@ -11,8 +11,14 @@ public class InventoryManager
     
     public InventoryManager()
     {
-        
+        _inventory.Add(new ConsumableProduct("123-123", "Spray Cleaner", "Cleans stuff", "Super Spray", 1.23, 250, 0.12, DateTime.Now, "123-789-b"));
     }
+    
+    
+    public List<ProductBase> Inventory => _inventory;
+    public List<ProductBase> InStockInventory => _inventory.Where(x => x.HasStock).ToList();
+    
+    public List<ProductBase> OutOfStockInventory => _inventory.Where(x => x.IsOutOfStock).ToList();
 
     public double TotalStockCount
     {
@@ -25,9 +31,11 @@ public class InventoryManager
             return 0;
         }
     }
-    
-    public IReadOnlyList<ProductBase> Inventory => _inventory;
-    public IReadOnlyList<ProductBase> LowStockInventory => _inventory.Where(x => x.IsLowStock).ToList();
+
+    public double InStockProductCount => _inventory.Count(x => x.HasStock);
+    public double OutOfStockProductCount => _inventory.Count(x => x.IsOutOfStock);
+
+    public double LowStockProductCount => _inventory.Count(x => !x.HasStock && !x.IsOutOfStock);
 
     /// <summary>
     /// 
