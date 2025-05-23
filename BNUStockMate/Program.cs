@@ -1,4 +1,7 @@
-﻿namespace BNUStockMate;
+﻿using BNUStockMate.Controller;
+using BNUStockMate.View;
+
+namespace BNUStockMate;
 
 /// <summary>
 /// Entry point into BNUStockMate
@@ -11,6 +14,7 @@ public static class Program
     /// <param name="args"> Command line args </param>
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello World!");
+        var mainMenu = new MainMenuController();
+        mainMenu.Run();
     }
 }

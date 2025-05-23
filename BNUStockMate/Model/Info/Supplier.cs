@@ -16,4 +16,9 @@ public class Supplier
     }
     
     public string Id => _id;
+
+    public override string ToString()
+    {
+        return $"{_id} - {_name} - {_email} - {_phone}";
+    }
 }

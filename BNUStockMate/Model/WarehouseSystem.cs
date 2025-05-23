@@ -1,4 +1,5 @@
-﻿using BNUStockMate.Model.Info;
+﻿using System.Reflection.Metadata.Ecma335;
+using BNUStockMate.Model.Info;
 using BNUStockMate.Model.Managers;
 using BNUStockMate.Model.Orders;
 
@@ -15,61 +16,18 @@ public class WarehouseSystem
     {
         
     }
+
+    public ContactDirectory ContactDirectory => _contactDirectory;
+    public InventoryManager InventoryManager => _inventoryManager;
     
-    
-    public void CreateCustomerOrder(string customerId, Dictionary<string, int> productQtyMap)
+    public OrderManager OrderManager => _orderManager;
+
+    public void ConfirmCustomerOrder(CustomerOrder order)
     {
-        // Find supplier
-        var customer = _contactDirectory.FindCustomerById(customerId);
-        if (customer == null)
-            throw new ArgumentException("Invalid supplier ID");
-
-        // Create PO lines
-        var orderLines = new List<OrderLine>();
-        foreach (var entry in productQtyMap)
-        {
-            var product = _inventoryManager.FindBySku(entry.Key);
-            if (product == null || product.Quantity < entry.Value)
-                throw new ArgumentException($"Invalid product SKU or not enough stock: {entry.Key}");
-
-            orderLines.Add(new OrderLine(product, entry.Value));
-        }
-        _orderManager.CreateCustomerOrder(customer, orderLines);
-    }
-
-    public void ConfirmCustomerOrder(int orderNumber)
-    {
-        var order = _orderManager.FindCustomerOrderById(orderNumber);
-        if (order == null)
-            throw new ArgumentException("Invalid customer order ID");
-        
+        _orderManager.AddCustomerOrder(order);
         order.Ship();
-        
         double orderTotal = order.OrderTotal;
         _financeManager.RecordSale(orderTotal);
-    }
-    
-    
-
-    public void CreatePurchaseOrder(string supplierId, Dictionary<string, int> productQtyMap)
-    {
-        // Find supplier
-        var supplier = _contactDirectory.FindSupplierById(supplierId);
-        if (supplier == null)
-            throw new ArgumentException("Invalid supplier ID");
-
-        // Create PO lines
-        var lines = new List<PurchaseOrderLine>();
-        foreach (var entry in productQtyMap)
-        {
-            var product = _inventoryManager.FindBySku(entry.Key);
-            if (product == null)
-                throw new ArgumentException($"Invalid product SKU: {entry.Key}");
-
-            lines.Add(new PurchaseOrderLine(product, entry.Value));
-        }
-        
-        _orderManager.CreatePurchaseOrder(supplier, lines);
     }
 
     public void ReceivePurchaseOrder(PurchaseOrder po)
