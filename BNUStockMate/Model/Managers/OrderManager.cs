@@ -7,12 +7,19 @@ namespace BNUStockMate.Model.Managers;
 public class OrderManager
 {
     private readonly List<CustomerOrder> _customerOrders = new List<CustomerOrder>();
+
     private readonly List<PurchaseOrder> _purchaseOrders = new List<PurchaseOrder>();
 
     public void PlaceOrder()
     {
         
     }
+
+    public List<CustomerOrder> CustomerOrders => _customerOrders;
+
+    public List<PurchaseOrder> PurchaseOrders => _purchaseOrders;
+    
+    public List<PurchaseOrder> ReceivedOrders => _purchaseOrders.Where(po => !po.IsDelivered).ToList();
 
     public CustomerOrder CreateCustomerOrder(Customer customer, List<OrderLine>  products)
     {
@@ -21,6 +28,8 @@ public class OrderManager
         var customerOrder = new CustomerOrder(orderNumber, customer, orderDate,products);
         return customerOrder;
     }
+    
+    
     
     
 

@@ -8,6 +8,12 @@ namespace BNUStockMate.View
 {
     public static class MenuViews
     {
+        public static bool ShowYesNoPrompt(string question)
+        {
+            Console.WriteLine($"{Environment.NewLine}{question} (Y/N): ");
+            return Console.ReadKey(true).Key == ConsoleKey.Y;
+        }
+        
         public static int ShowSelectableMenu(string title, List<string> options)
         {
             int selectedIndex = 0;
@@ -92,6 +98,14 @@ namespace BNUStockMate.View
             } while (key != ConsoleKey.Enter);
 
             return items[selectedIndex];
+        }
+
+        public static void PrintReport(Dictionary<string, double> report)
+        {
+            foreach (var entry in report)
+            {
+                Console.WriteLine($"{entry.Key}: £{entry.Value:F2}");
+            }
         }
     }
 }
