@@ -23,7 +23,7 @@ namespace BNUStockMate.Controller
         {
             _warehouseSystem = new WarehouseSystem();
             _contactsController = new ContactsController(_warehouseSystem.ContactDirectory);
-            _inventoryController = new InventoryController(_warehouseSystem.InventoryManager);
+            _inventoryController = new InventoryController(_warehouseSystem);
             _orderController = new OrderController(_warehouseSystem);
         }
 
