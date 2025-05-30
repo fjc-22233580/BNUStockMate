@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BNUStockMate.Model.Enums
+﻿namespace BNUStockMate.Model.Enums
 {
+    /// <summary>
+    /// Represents the net income status of our financial data.
+    /// </summary>
     public enum NetIncomeStatus
     {
         Profit,
