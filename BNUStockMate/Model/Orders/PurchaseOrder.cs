@@ -4,16 +4,16 @@ namespace BNUStockMate.Model.Orders;
 
 public class PurchaseOrder
 {
-    public PurchaseOrder(int orderNumber, Supplier customer, DateTime orderDate, List<PurchaseOrderLine> orderLines)
+    public PurchaseOrder(int orderNumber, Supplier supplier, DateTime orderDate, List<PurchaseOrderLine> orderLines)
     {
         OrderNumber = orderNumber;
-        Customer = customer;
+        Supplier = supplier;
         OrderDate = orderDate;
         OrderLines = orderLines;
     }
     
     public int OrderNumber { get; }
-    public Supplier Customer { get; }
+    public Supplier Supplier { get; }
     public DateTime OrderDate { get; }
     public List<PurchaseOrderLine> OrderLines { get; }
     

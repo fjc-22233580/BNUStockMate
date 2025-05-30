@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using BNUStockMate.Model.Info;
-using BNUStockMate.Model.Managers;
+﻿using BNUStockMate.Model.Managers;
 using BNUStockMate.Model.Orders;
 
 namespace BNUStockMate.Model;
@@ -11,6 +9,7 @@ public class WarehouseSystem
     private OrderManager  _orderManager = new OrderManager();
     private ContactDirectory  _contactDirectory = new ContactDirectory();
     private FinanceManager  _financeManager = new FinanceManager();
+
     
     public WarehouseSystem()
     {
@@ -19,6 +18,7 @@ public class WarehouseSystem
 
     public ContactDirectory ContactDirectory => _contactDirectory;
     public InventoryManager InventoryManager => _inventoryManager;
+    public FinanceManager FinanceManager => _financeManager;
     
     public OrderManager OrderManager => _orderManager;
 

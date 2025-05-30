@@ -28,10 +28,6 @@ public class OrderManager
         var customerOrder = new CustomerOrder(orderNumber, customer, orderDate,products);
         return customerOrder;
     }
-    
-    
-    
-    
 
     public PurchaseOrder CreatePurchaseOrder(Supplier supplier, List<PurchaseOrderLine> products)
     {
@@ -40,6 +36,7 @@ public class OrderManager
         var purchaseOrder = new PurchaseOrder(orderNumber, supplier, orderDate, products);
         _purchaseOrders.Add(purchaseOrder);
         return purchaseOrder;
+
     }
 
     public CustomerOrder? FindCustomerOrderById(int orderNumber)

@@ -13,6 +13,8 @@ public class FinanceController
     private List<string> _menuOptions = new List<string>()
     {
         "1. View finance summary",
+        "2. View monthly finance report",
+        "3. Return to previous menu"
     };
     
     public FinanceController(FinanceManager financeManager, OrderManager orderManager)
@@ -27,14 +29,12 @@ public class FinanceController
         bool running = true;
         while (running)
         {
-            int response = MenuViews.ShowSelectableMenu("Finance Manager", _menuOptions);
+            int response = MenuViewsHelper.ShowSelectableMenu("Finance Manager", _menuOptions);
             switch (response)
             {
                 case 0: ViewFinanceSummary(); break;
                 case 1: ViewFinanceReport(); break;
-                // case 2: ViewAllProducts(); break;
-                // case 3: ViewDeliveries(); break;
-                case 4: running = false; break; // Back to Main Menu
+                case 2: running = false; break; // Back to Main Menu
             }
         }
     }
@@ -42,18 +42,12 @@ public class FinanceController
     private void ViewFinanceReport()
     {
         var report = _financeManager.CalculateMonthlyIncome(_orderManager.CustomerOrders);
-        MenuViews.PrintReport(report);
+        ViewHelper.PrintReport(report);
     }
 
     private void ViewFinanceSummary()
     {
-        // TODO - Use inbuilt currency converter
-        
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Finance Summary");
-
-        sb.AppendLine($"Total outgoings: £{_financeManager.TotalExpenses}");
-        sb.AppendLine($"Net income: £{_financeManager.NetIncome}");
-        sb.AppendLine($"Net income: £{_financeManager.NetIncome}");
+        ViewHelper.PrintFinanceSummary(_financeManager.TotalExpenses, _financeManager.TotalSales,
+            _financeManager.NetIncome, _financeManager.NetIncomeStatus);
     }
 }

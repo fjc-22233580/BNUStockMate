@@ -2,12 +2,12 @@ namespace BNUStockMate.Model.Info;
 
 public class Supplier
 {
-    private readonly string _id;
+    private readonly int _id;
     private readonly string _name;
     private readonly string _email;
     private readonly string _phone;
 
-    public Supplier(string id, string name, string email, string phone)
+    public Supplier(int id, string name, string email, string phone)
     {
         _id = id;
         _name = name;
@@ -15,7 +15,9 @@ public class Supplier
         _phone = phone;
     }
     
-    public string Id => _id;
+    public int Id => _id;
+
+    public string Name => _name;
 
     public override string ToString()
     {
