@@ -18,7 +18,7 @@ public class InventoryManager
     /// </summary>
     public InventoryManager()
     {
-        _inventory.Add(new ConsumableProduct("123-123", "Spray Cleaner", "Cleans stuff", "Super Spray", 1.23, 250, 0.12, DateTime.Now, "123-789-b"));
+        _inventory.Add(new ConsumableProduct("123-123", "Spray Cleaner", "Cleans stuff",  1.23, 250, 0.12, DateTime.Now, "123-789-b"));
     }
 
     /// <summary>

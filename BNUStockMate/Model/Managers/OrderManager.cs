@@ -39,7 +39,7 @@ public class OrderManager
     /// <param name="customer">The customer for whom the order is being created.</param>
     /// <param name="products">The list of products to include in the order. </param>
     /// <returns>A <see cref="CustomerOrder"/> instance representing the newly created order.</returns>
-    public CustomerOrder CreateCustomerOrder(Customer customer, List<OrderLine>  products)
+    public CustomerOrder CreateCustomerOrder(Customer customer, List<CustomerOrderLine>  products)
     {
         int orderNumber = _customerOrders.Count + 1;
         var orderDate = DateTime.Now;

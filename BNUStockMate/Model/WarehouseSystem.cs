@@ -3,33 +3,48 @@ using BNUStockMate.Model.Orders;
 
 namespace BNUStockMate.Model;
 
+/// <summary>
+/// Represents a system for managing warehouse operations, including inventory, orders, contacts, and finances.
+/// This is the root model for the warehouse management system, encapsulating all the necessary managers
+/// </summary>
 public class WarehouseSystem
 {
-    private InventoryManager  _inventoryManager = new InventoryManager();
-    private OrderManager  _orderManager = new OrderManager();
-    private ContactDirectory  _contactDirectory = new ContactDirectory();
-    private FinanceManager  _financeManager = new FinanceManager();
+    /// <summary>
+    /// Represents a directory of contacts used internally for managing contact information.
+    /// </summary>
+    public ContactDirectory ContactDirectory { get; } = new ContactDirectory();
 
-    
-    public WarehouseSystem()
-    {
-        
-    }
+    /// <summary>
+    /// Manages inventory-related operations, such as tracking stock levels and processing inventory updates.
+    /// </summary>
+    public InventoryManager InventoryManager { get; } = new InventoryManager();
 
-    public ContactDirectory ContactDirectory => _contactDirectory;
-    public InventoryManager InventoryManager => _inventoryManager;
-    public FinanceManager FinanceManager => _financeManager;
-    
-    public OrderManager OrderManager => _orderManager;
+    /// <summary>
+    /// Manages financial operations, including recording sales and purchases, and tracking financial transactions.
+    /// </summary>
+    public FinanceManager FinanceManager { get; } = new FinanceManager();
 
+    /// <summary>
+    /// Manages and processes orders within the application.
+    /// </summary>
+    public OrderManager OrderManager { get; } = new OrderManager();
+
+    /// <summary>
+    /// Confirms a customer order by processing it, shipping the order, and recording the sale.
+    /// </summary>
+    /// <param name="order">The customer order to confirm. </param>
     public void ConfirmCustomerOrder(CustomerOrder order)
     {
-        _orderManager.AddCustomerOrder(order);
+        OrderManager.AddCustomerOrder(order);
         order.Ship();
         double orderTotal = order.OrderTotal;
-        _financeManager.RecordSale(orderTotal);
+        FinanceManager.RecordSale(orderTotal);
     }
 
+    /// <summary>
+    /// Marks the specified purchase order as delivered and processes its order lines.
+    /// </summary>
+    /// <param name="po">The purchase order to be received. </param>
     public void ReceivePurchaseOrder(PurchaseOrder po)
     {
         po.IsDelivered = true;
@@ -40,7 +55,7 @@ public class WarehouseSystem
         }
         
         double cost = po.OrderTotal;
-        _financeManager.RecordPurchaseOrder(cost);
+        FinanceManager.RecordPurchaseOrder(cost);
     }
     
 }

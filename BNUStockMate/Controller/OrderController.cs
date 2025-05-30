@@ -63,7 +63,7 @@ public class OrderController
         var customer =
             MenuViewsHelper.ShowSelectableList("Please select customer: ", _warehouseSystem.ContactDirectory.Customers);
 
-        List<OrderLine> orderLines = new List<OrderLine>();
+        List<CustomerOrderLine> orderLines = new List<CustomerOrderLine>();
 
         // Loop for line items
         bool addingItems = true;
@@ -80,7 +80,7 @@ public class OrderController
                 Console.Write("Invalid quantity. Try again: ");
             }
 
-            var orderLine = new OrderLine(item, qty);
+            var orderLine = new CustomerOrderLine(item, qty);
             orderLines.Add(orderLine);
 
             Console.WriteLine(
