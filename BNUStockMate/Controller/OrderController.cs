@@ -1,59 +1,63 @@
 ﻿using BNUStockMate.Model;
-using BNUStockMate.Model.Managers;
 using BNUStockMate.Model.Orders;
-using BNUStockMate.Model.Products;
 using BNUStockMate.View;
 
 namespace BNUStockMate.Controller;
 
+/// <summary>
+/// Provides functionality for managing and processing orders, including customer orders and purchase orders.
+/// </summary>
 public class OrderController
 {
-    private List<string> _menuOptions = new List<string>()
-    {
-        "1. Create Supplier Order",
-        "2. Create Purchase Order",
-        "3. View all customer orders",
-        "4. View all purchase orders",
-        "5. Return to previous menu"
-    };
-
+    /// <summary>
+    /// Holds a reference to the WarehouseSystem, which contains the OrderManager and other managers needed for order processing.
+    /// </summary>
     private readonly WarehouseSystem _warehouseSystem;
 
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="OrderController"/> class.
+    /// </summary>
+    /// <param name="warehouseSystem">The <see cref="WarehouseSystem"/> instance used to manage and process orders. This parameter cannot be null.</param>
     public OrderController(WarehouseSystem warehouseSystem)
     {
         _warehouseSystem = warehouseSystem;
     }
 
-
+    /// <summary>
+    /// Displays a menu for order processing and handles user selections to perform various order-related operations.
+    /// </summary>
     public void Run()
     {
-        bool running = true;
+        // Define the menu options for the Order Processing menu.
+        var _menuOptions = new List<string>
+        {
+            "1. Create Supplier Order",
+            "2. Create Purchase Order",
+            "3. View all customer orders",
+            "4. View all purchase orders",
+            "5. Return to previous menu"
+        };
+
+        // Loop until the user chooses a child option or to exit the previous menu.
+        var running = true;
         while (running)
         {
-            int response = MenuViewsHelper.ShowSelectableMenu("Order Processing", _menuOptions);
+            var response = MenuViewsHelper.ShowSelectableMenu("Order Processing", _menuOptions);
             switch (response)
             {
                 case 0: CreateCustomerOrder(); break;
                 case 1: CreatePurchaseOrder(); break;
-                case 2: ViewCustomerOrders(); break;
-                case 3: ViewPurchaseOrders(); break;
+                case 2: ViewHelper.PrintList("Supplier order history: ", _warehouseSystem.OrderManager.CustomerOrders); ; break;
+                case 3: ViewHelper.PrintList("Purchase order history: ", _warehouseSystem.OrderManager.PurchaseOrders); ; break;
                 case 4: running = false; break; // Back to Main Menu
             }
         }
     }
 
-    private void ViewPurchaseOrders()
-    {
-        ViewHelper.PrintList("Purchase order history: ", _warehouseSystem.OrderManager.PurchaseOrders);
-    }
-
-    private void ViewCustomerOrders()
-    {
-        ViewHelper.PrintList("Supplier order history: ", _warehouseSystem.OrderManager.CustomerOrders);
-    }
-
-
+    /// <summary>
+    /// Creates a new customer order by allowing the user to select a customer, add items to the order,  and optionally
+    /// confirm and ship the order.
+    /// </summary>
     private void CreateCustomerOrder()
     {
         var customer =
@@ -98,7 +102,9 @@ public class OrderController
         Console.ReadKey(true);
     }
 
-
+    /// <summary>
+    /// Creates a new purchase order by selecting a supplier and adding line items.
+    /// </summary>
     private void CreatePurchaseOrder()
     {
         // Check if there are any suppliers available
