@@ -9,19 +9,31 @@ public class ContactDirectory
 
     public ContactDirectory()
     {
-        _suppliers.Add(new Supplier("123", "CompanyA", "email@email.com", "132-123"));
-        _suppliers.Add(new Supplier("456", "CompanyB", "email@email.com", "7896-57"));
-        _customers.Add(new Customer("789", "BNU", "bnu@bnu.com", "789-657", "Desborough Avenue"));
-        _customers.Add(new Customer("5686", "Burger King", "info@BK.com", "4532-657", "Town City"));
+        _suppliers.Add(new Supplier(123, "CompanyA", "email@email.com", "132-123"));
+        _suppliers.Add(new Supplier(456, "CompanyB", "email@email.com", "7896-57"));
+        _customers.Add(new Customer(789, "BNU", "bnu@bnu.com", "789-657"));
+        _customers.Add(new Customer(5686, "Burger King", "info@BK.com", "4532-657"));
     }
 
-    public List<Supplier> Supplers => _suppliers;
+    public List<Supplier> Suppliers => _suppliers;
     
     public List<Customer> Customers => _customers;
     
-    public void AddCustomer(Customer customer)
+
+    public Supplier AddSupplier(string name, string email, string phone)
     {
+        int id = _suppliers.Count + 1;
+        var supplier = new Supplier(id, name, email, phone);
+        _suppliers.Add(supplier);
+        return supplier;
+    }
+
+    public Customer AddCustomer(string name, string email, string phone)
+    {
+        int id = _customers.Count + 1;
+        var customer = new Customer(id, name, email, phone);
         _customers.Add(customer);
+        return customer;
     }
 
     public void RemoveCustomer(Customer customer)
@@ -29,25 +41,19 @@ public class ContactDirectory
         _customers.Remove(customer);
     }
 
-    public void AddSupplier(Supplier supplier)
-    {
-        _suppliers.Add(supplier);
-    }
-
     public void RemoveSupplier(Supplier supplier)
     {
         _suppliers.Remove(supplier);
     }
 
-    public Supplier? FindSupplierById(string id)
-    {
-        return _suppliers.FirstOrDefault(s => s.Id == id);
-    }
+    //public Supplier? FindSupplierById(string id)
+    //{
+    //    return _suppliers.FirstOrDefault(s => s.Id == id);
+    //}
 
-    public Customer? FindCustomerById(string id)
+    public Customer? FindCustomerById(int id)
     {
         return _customers.FirstOrDefault(s => s.Id == id);
     }
-    
-    
+
 }

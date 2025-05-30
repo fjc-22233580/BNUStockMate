@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace BNUStockMate.View
 {
-    public static class MenuViews
+    public static class MenuViewsHelper
     {
-        public static bool ShowYesNoPrompt(string question)
-        {
-            Console.WriteLine($"{Environment.NewLine}{question} (Y/N): ");
-            return Console.ReadKey(true).Key == ConsoleKey.Y;
-        }
+        
         
         public static int ShowSelectableMenu(string title, List<string> options)
         {
@@ -51,17 +47,6 @@ namespace BNUStockMate.View
             return selectedIndex;
         }
 
-        public static void PrintList<T>(string title, List<T> items)
-        {
-            Console.Clear();
-            Console.WriteLine($"--- {title} ---");
-
-            foreach (var p in items)
-                Console.WriteLine($"- {p}");
-
-            Console.WriteLine("Press any key to return...");
-            Console.ReadKey(true);
-        }
         
         public static T ShowSelectableList<T>(string title, List<T> items)
         {
@@ -98,14 +83,6 @@ namespace BNUStockMate.View
             } while (key != ConsoleKey.Enter);
 
             return items[selectedIndex];
-        }
-
-        public static void PrintReport(Dictionary<string, double> report)
-        {
-            foreach (var entry in report)
-            {
-                Console.WriteLine($"{entry.Key}: £{entry.Value:F2}");
-            }
         }
     }
 }

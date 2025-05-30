@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using BNUStockMate.Model.Enums;
 using BNUStockMate.Model.Orders;
 
 namespace BNUStockMate.Model.Managers;
@@ -13,7 +14,23 @@ public class FinanceManager
     }
     
     public double NetIncome => _totalExpenses - _totalSales;
-    
+
+    public NetIncomeStatus NetIncomeStatus
+    {
+        get
+        {
+            switch (NetIncome)
+            {
+                case > 0:
+                    return NetIncomeStatus.Profit;
+                case < 0:
+                    return NetIncomeStatus.Loss;
+                default:
+                    return NetIncomeStatus.BreakEven;
+            }
+        }
+    }
+
     public double TotalExpenses => _totalExpenses;
     public double TotalSales => _totalSales;
 
@@ -31,8 +48,6 @@ public class FinanceManager
 
         return result;
     }
-    
-    
 
     public void RecordPurchaseOrder(double amount)
     {
