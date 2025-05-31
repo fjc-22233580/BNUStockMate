@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNUStockMate", "BNUStockMate\BNUStockMate.csproj", "{C26EDAB7-7356-4DDC-8F5F-1AD21572187C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNUStockMateTests", "BNUStockMateTests\BNUStockMateTests.csproj", "{6CBA0376-0801-46DD-8AF4-2C0737D36D32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C26EDAB7-7356-4DDC-8F5F-1AD21572187C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C26EDAB7-7356-4DDC-8F5F-1AD21572187C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C26EDAB7-7356-4DDC-8F5F-1AD21572187C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CBA0376-0801-46DD-8AF4-2C0737D36D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CBA0376-0801-46DD-8AF4-2C0737D36D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CBA0376-0801-46DD-8AF4-2C0737D36D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CBA0376-0801-46DD-8AF4-2C0737D36D32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

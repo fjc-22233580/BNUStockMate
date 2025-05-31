@@ -22,7 +22,7 @@ public class FinanceManager
     /// <summary>
     /// Gets the net income, calculated as the difference between total sales and total expenses.
     /// </summary>
-    public double NetIncome => _totalExpenses - _totalSales;
+    public double NetIncome => _totalSales - _totalExpenses;
 
     /// <summary>
     /// Gets the total expenses incurred.
