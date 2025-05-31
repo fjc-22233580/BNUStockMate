@@ -1,5 +1,4 @@
 ﻿using BNUStockMate.Controller;
-using BNUStockMate.View;
 
 namespace BNUStockMate;
 
@@ -14,6 +13,7 @@ public static class Program
     /// <param name="args"> Command line args </param>
     public static void Main(string[] args)
     {
+        // Initialize the main menu controller and run it to start the application.
         var mainMenu = new MainMenuController();
         mainMenu.Run();
     }

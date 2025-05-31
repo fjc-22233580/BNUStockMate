@@ -6,7 +6,7 @@ namespace BNUStockMate.Model.Orders;
 public class CustomerOrder
 {
 
-    public CustomerOrder(int orderNumber, Customer customer, DateTime orderDate, List<OrderLine> orderLines)
+    public CustomerOrder(int orderNumber, Customer customer, DateTime orderDate, List<CustomerOrderLine> orderLines)
     {
         OrderNumber = orderNumber;
         Customer = customer;
@@ -20,7 +20,7 @@ public class CustomerOrder
     public int OrderNumber { get; }
     public Customer Customer { get; }
     public DateTime OrderDate { get; }
-    public List<OrderLine> OrderLines { get; }
+    public List<CustomerOrderLine> OrderLines { get; }
     public OrderState OrderState { get; private set; }
     
     public double OrderTotal => OrderLines.Sum(o => o.LineTotal);
