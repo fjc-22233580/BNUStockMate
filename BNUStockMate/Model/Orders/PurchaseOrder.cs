@@ -16,8 +16,6 @@ public class PurchaseOrder
     public Supplier Supplier { get; }
     public DateTime OrderDate { get; }
     public List<PurchaseOrderLine> OrderLines { get; }
-    
-    public DateTime DeliveryDate { get; }
 
     public bool IsDelivered { get; set; }
     

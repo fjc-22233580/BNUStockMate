@@ -12,13 +12,12 @@ public class InventoryManager
     /// Represents a collection of products in the inventory.
     /// </summary>
     private readonly List<ProductBase> _inventory = new List<ProductBase>();
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryManager"/> class.
     /// </summary>
     public InventoryManager()
     {
-        _inventory.Add(new ConsumableProduct("123-123", "Spray Cleaner", "Cleans stuff",  1.23, 250, 0.12, DateTime.Now, "123-789-b"));
     }
 
     /// <summary>
@@ -45,5 +44,24 @@ public class InventoryManager
     /// Gets the count of products in the inventory that are low on stock but not completely out of stock.
     /// </summary>
     public double LowStockProductCount => _inventory.Count(x => !x.HasStock && !x.IsOutOfStock);
+
+    /// <summary>
+    /// Adds a product to the inventory if it does not already exist.
+    /// </summary>
+    /// <param name="product">The product to add to the inventory. M</param>
+    /// <returns><see langword="true"/> if the product was successfully added;  otherwise, <see langword="false"/> if a product
+    /// with the same SKU already exists in the inventory. </returns>
+    public bool AddProduct(ProductBase product)
+    {
+        // Check if product already exists in the inventory based on SKU
+        if (_inventory.Any(p => p.Sku.Equals(product.Sku)))
+        {
+            return false;
+        }
+
+        // Add the product to the inventory
+        _inventory.Add(product);
+        return true;
+    }
 
 }
