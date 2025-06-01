@@ -1,3 +1,4 @@
+using BNUStockMate.Model.Orders.BaseClasses;
 using BNUStockMate.Model.Products;
 
 namespace BNUStockMate.Model.Orders;

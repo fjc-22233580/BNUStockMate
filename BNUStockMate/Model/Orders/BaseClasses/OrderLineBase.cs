@@ -1,6 +1,6 @@
 ﻿using BNUStockMate.Model.Products;
 
-namespace BNUStockMate.Model.Orders;
+namespace BNUStockMate.Model.Orders.BaseClasses;
 
 /// <summary>
 /// Represents the base class for an order line, encapsulating a product and its associated quantity.

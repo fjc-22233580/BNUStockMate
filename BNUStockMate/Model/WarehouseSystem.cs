@@ -1,4 +1,5 @@
-﻿using BNUStockMate.Model.Managers;
+﻿using BNUStockMate.Model.Enums;
+using BNUStockMate.Model.Managers;
 using BNUStockMate.Model.Orders;
 
 namespace BNUStockMate.Model;
@@ -36,6 +37,8 @@ public class WarehouseSystem
     public void ConfirmCustomerOrder(CustomerOrder order)
     {
         OrderManager.AddCustomerOrder(order);
+
+        order.OrderState = OrderState.Shipped;
 
         // Update stock levels for each order line in the customer order.
         foreach (var customerOrderLine in order.OrderLines)
