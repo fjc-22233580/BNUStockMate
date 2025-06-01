@@ -1,4 +1,4 @@
-using BNUStockMate.Model.Managers;
+using BNUStockMate.Model;
 using BNUStockMate.View;
 
 namespace BNUStockMate.Controller;
@@ -9,24 +9,17 @@ namespace BNUStockMate.Controller;
 public class FinanceController
 {
     /// <summary>
-    /// Holds a reference to the finance manager responsible for handling financial operations.
+    /// Represents the warehouse system used for managing inventory and operations.
     /// </summary>
-    private readonly FinanceManager _financeManager;
-
-    /// <summary>
-    /// MHolds a reference to the order manager to access customer orders for financial calculations.
-    /// </summary>
-    private readonly OrderManager _orderManager;
+    private readonly WarehouseSystem _warehouseSystem;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="FinanceController"/> class.
     /// </summary>
-    /// <param name="financeManager">The <see cref="FinanceManager"/> instance responsible for managing financial operations.</param>
-    /// <param name="orderManager">The <see cref="OrderManager"/> instance responsible for managing order-related operations.</param>
-    public FinanceController(FinanceManager financeManager, OrderManager orderManager)
+    /// <param name="warehouseSystem">The warehouse system instance used to manage inventory and financial operations. </param>
+    public FinanceController(WarehouseSystem warehouseSystem)
     {
-        _financeManager = financeManager;
-        _orderManager = orderManager;
+        _warehouseSystem = warehouseSystem;
     }
 
     /// <summary>
@@ -63,7 +56,7 @@ public class FinanceController
     /// report using a helper utility.</remarks>
     private void ViewFinanceReport()
     {
-        var report = _financeManager.CalculateMonthlyIncome(_orderManager.CustomerOrders);
+        var report = _warehouseSystem.FinanceManager.CalculateMonthlyIncome(_warehouseSystem.OrderManager.CustomerOrders);
         ViewHelper.PrintReport(report);
     }
 
@@ -74,7 +67,7 @@ public class FinanceController
     /// and display the summary. It is intended for presenting an overview of the current financial state.</remarks>
     private void ViewFinanceSummary()
     {
-        ViewHelper.PrintFinanceSummary(_financeManager.TotalExpenses, _financeManager.TotalSales,
-            _financeManager.NetIncome, _financeManager.NetIncomeStatus);
+        ViewHelper.PrintFinanceSummary(_warehouseSystem.FinanceManager.TotalExpenses, _warehouseSystem.FinanceManager.TotalSales,
+            _warehouseSystem.FinanceManager.NetIncome, _warehouseSystem.FinanceManager.NetIncomeStatus);
     }
 }

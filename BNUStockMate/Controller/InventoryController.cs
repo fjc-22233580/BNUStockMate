@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using BNUStockMate.Model;
-using BNUStockMate.Model.Managers;
 using BNUStockMate.View;
 
 namespace BNUStockMate.Controller;
@@ -16,16 +15,6 @@ public class InventoryController
     private readonly WarehouseSystem _warehouseSystem;
 
     /// <summary>
-    /// Holds a reference to the inventory manager responsible for managing stock levels and product information.
-    /// </summary>
-    private readonly InventoryManager _inventoryManager;
-
-    /// <summary>
-    /// Holds a reference to the order manager responsible for managing purchase orders and deliveries.
-    /// </summary>
-    private readonly OrderManager _orderManager;
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="InventoryController"/> class, using the specified warehouse system
     /// to manage inventory and orders.
     /// </summary>
@@ -33,8 +22,6 @@ public class InventoryController
     public InventoryController(WarehouseSystem warehouseSystem)
     {
         _warehouseSystem = warehouseSystem;
-        _inventoryManager = warehouseSystem.InventoryManager;
-        _orderManager = warehouseSystem.OrderManager;
     }
 
     /// <summary>
@@ -60,8 +47,8 @@ public class InventoryController
             switch (response)
             {
                 case 0: ViewStockSummary(); break;
-                case 1: ViewHelper.PrintList("All in stock inventory", _inventoryManager.InStockInventory); break;
-                case 2: ViewHelper.PrintList("All inventory", _inventoryManager.Inventory); break;
+                case 1: ViewHelper.PrintList("All in stock inventory", _warehouseSystem.InventoryManager.InStockInventory); break;
+                case 2: ViewHelper.PrintList("All inventory", _warehouseSystem.InventoryManager.Inventory); break;
                 case 3: ProcessDeliveries(); break;
                 case 4: running = false; break; // Back to Main Menu
             }
@@ -79,9 +66,9 @@ public class InventoryController
         bool running = true;
         while (running)
         {
-            if (_orderManager.ReceivedOrders.Count > 0)
+            if (_warehouseSystem.OrderManager.ReceivedOrders.Count > 0)
             {
-                var po = MenuViewsHelper.ShowSelectableList("Deliveries", _orderManager.ReceivedOrders);
+                var po = MenuViewsHelper.ShowSelectableList("Deliveries", _warehouseSystem.OrderManager.ReceivedOrders);
                 _warehouseSystem.ReceivePurchaseOrder(po);
                 running = ViewHelper.ShowYesNoPrompt("Process another order?");
             }
@@ -105,19 +92,19 @@ public class InventoryController
         StringBuilder sb = new StringBuilder();
         sb.AppendLine("Stock summary:");
 
-        if (_inventoryManager.InStockProductCount > 0)
+        if (_warehouseSystem.InventoryManager.InStockProductCount > 0)
         {
-            sb.AppendLine($"{_inventoryManager.InStockProductCount} items with available stock.");
+            sb.AppendLine($"{_warehouseSystem.InventoryManager.InStockProductCount} items with available stock.");
         }
 
-        if (_inventoryManager.LowStockProductCount > 0)
+        if (_warehouseSystem.InventoryManager.LowStockProductCount > 0)
         {
-            sb.AppendLine($"{_inventoryManager.LowStockProductCount} items with low stock.");
+            sb.AppendLine($"{_warehouseSystem.InventoryManager.LowStockProductCount} items with low stock.");
         }
 
-        if (_inventoryManager.OutOfStockProductCount > 0)
+        if (_warehouseSystem.InventoryManager.OutOfStockProductCount > 0)
         {
-            sb.AppendLine($"{_inventoryManager.OutOfStockProductCount} items out of stock.");
+            sb.AppendLine($"{_warehouseSystem.InventoryManager.OutOfStockProductCount} items out of stock.");
         }
 
         ViewHelper.PrintReturnMessage(sb.ToString());
