@@ -69,7 +69,7 @@ namespace BNUStockMate.Controller
         /// displayed.</remarks>
         private void AddCustomer()
         {
-            string name = ViewHelper.GetValidatedString("Enter customer name");
+            string name = ViewHelperValidators.GetValidatedString("Enter customer name");
 
             if (name == null)
             {
@@ -77,7 +77,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string email = ViewHelper.GetValidatedEmail("Enter customer email");
+            string email = ViewHelperValidators.GetValidatedEmail("Enter customer email");
 
             if (email == null)
             {
@@ -85,7 +85,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string phone = ViewHelper.GetValidatedString("Enter customer phone number");
+            string phone = ViewHelperValidators.GetValidatedString("Enter customer phone number");
 
             if (phone == null)
             {
@@ -109,7 +109,7 @@ namespace BNUStockMate.Controller
         {
             // "CompanyA", "email@email.com", "132-123"));
 
-            string name = ViewHelper.GetValidatedString("Enter supplier name");
+            string name = ViewHelperValidators.GetValidatedString("Enter supplier name");
 
             if (name == null)
             {
@@ -117,7 +117,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string email = ViewHelper.GetValidatedEmail("Enter supplier email");
+            string email = ViewHelperValidators.GetValidatedEmail("Enter supplier email");
 
             if (email == null)
             {
@@ -125,7 +125,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string phone = ViewHelper.GetValidatedString("Enter supplier phone number");
+            string phone = ViewHelperValidators.GetValidatedString("Enter supplier phone number");
 
             if (phone == null)
             {

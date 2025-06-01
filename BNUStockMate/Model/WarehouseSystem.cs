@@ -36,7 +36,14 @@ public class WarehouseSystem
     public void ConfirmCustomerOrder(CustomerOrder order)
     {
         OrderManager.AddCustomerOrder(order);
-        order.Ship();
+
+        // Update stock levels for each order line in the customer order.
+        foreach (var customerOrderLine in order.OrderLines)
+        {
+            customerOrderLine.Fulfil();
+        }
+
+        // Record the sale in the finance manager.
         double orderTotal = order.OrderTotal;
         FinanceManager.RecordSale(orderTotal);
     }
@@ -49,11 +56,13 @@ public class WarehouseSystem
     {
         po.IsDelivered = true;
 
+        // Update stock levels for each order line in the purchase order.
         foreach (var line in po.OrderLines)
         {
             line.Fulfil();
         }
-        
+
+        // Record the purchase order cost in the finance manager.
         double cost = po.OrderTotal;
         FinanceManager.RecordPurchaseOrder(cost);
     }
