@@ -24,14 +24,4 @@ public class CustomerOrder
     public OrderState OrderState { get; private set; }
     
     public double OrderTotal => OrderLines.Sum(o => o.LineTotal);
-
-    public void Ship()
-    {
-        foreach (var orderLine in OrderLines)
-        {
-            orderLine.Fulfil();
-        }
-        
-        OrderState = OrderState.Shipped;
-    }
 }

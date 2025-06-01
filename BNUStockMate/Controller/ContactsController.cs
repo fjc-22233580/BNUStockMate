@@ -1,6 +1,6 @@
-﻿using BNUStockMate.View;
+﻿using BNUStockMate.Model;
+using BNUStockMate.View;
 using BNUStockMate.Model.Info;
-using BNUStockMate.Model.Managers;
 
 namespace BNUStockMate.Controller
 {
@@ -12,17 +12,17 @@ namespace BNUStockMate.Controller
     public class ContactsController
     {
         /// <summary>
-        /// Holds a reference to the contact directory which contains suppliers and customers.
+        /// Holds a reference the root model for the warehouse system, which contains the contact directory.
         /// </summary>
-        private readonly ContactDirectory _contactDirectory;
+        private readonly WarehouseSystem _warehouseSystem;
 
         /// <summary>
         /// Constructor for the ContactsController.
         /// </summary>
-        /// <param name="contactDirectory"> The contacts directory model </param>
-        public ContactsController(ContactDirectory contactDirectory)
+        /// <param name="warehouseSystem"> The model </param>
+        public ContactsController(WarehouseSystem warehouseSystem)
         {
-            _contactDirectory = contactDirectory;
+            _warehouseSystem = warehouseSystem;
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace BNUStockMate.Controller
                 var response = MenuViewsHelper.ShowSelectableMenu("Supplier Management", _menuOptions);
                 switch (response)
                 {
-                    case 0: ViewHelper.PrintList<Supplier>("Suppliers", _contactDirectory.Suppliers); break;
-                    case 1: ViewHelper.PrintList<Customer>("Customers", _contactDirectory.Customers); break;
+                    case 0: ViewHelper.PrintList<Supplier>("Suppliers", _warehouseSystem.ContactDirectory.Suppliers); break;
+                    case 1: ViewHelper.PrintList<Customer>("Customers", _warehouseSystem.ContactDirectory.Customers); break;
                     case 2: AddSupplier(); break;
                     case 3: DeleteSupplier(); break;
                     case 4: AddCustomer(); break;
@@ -69,7 +69,7 @@ namespace BNUStockMate.Controller
         /// displayed.</remarks>
         private void AddCustomer()
         {
-            string name = ViewHelper.GetValidatedString("Enter customer name");
+            string name = ViewHelperValidators.GetValidatedString("Enter customer name");
 
             if (name == null)
             {
@@ -77,7 +77,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string email = ViewHelper.GetValidatedEmail("Enter customer email");
+            string email = ViewHelperValidators.GetValidatedEmail("Enter customer email");
 
             if (email == null)
             {
@@ -85,7 +85,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string phone = ViewHelper.GetValidatedString("Enter customer phone number");
+            string phone = ViewHelperValidators.GetValidatedString("Enter customer phone number");
 
             if (phone == null)
             {
@@ -93,7 +93,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            var customer = _contactDirectory.AddCustomer(name, email, phone);
+            var customer = _warehouseSystem.ContactDirectory.AddCustomer(name, email, phone);
 
             ViewHelper.PrintReturnMessage($"Supplier {customer.Name} added successfully with ID {customer.Id}.");
         }
@@ -109,7 +109,7 @@ namespace BNUStockMate.Controller
         {
             // "CompanyA", "email@email.com", "132-123"));
 
-            string name = ViewHelper.GetValidatedString("Enter supplier name");
+            string name = ViewHelperValidators.GetValidatedString("Enter supplier name");
 
             if (name == null)
             {
@@ -117,7 +117,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string email = ViewHelper.GetValidatedEmail("Enter supplier email");
+            string email = ViewHelperValidators.GetValidatedEmail("Enter supplier email");
 
             if (email == null)
             {
@@ -125,7 +125,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            string phone = ViewHelper.GetValidatedString("Enter supplier phone number");
+            string phone = ViewHelperValidators.GetValidatedString("Enter supplier phone number");
 
             if (phone == null)
             {
@@ -133,7 +133,7 @@ namespace BNUStockMate.Controller
                 return;
             }
 
-            var suppler = _contactDirectory.AddSupplier(name, email, phone);
+            var suppler = _warehouseSystem.ContactDirectory.AddSupplier(name, email, phone);
 
             ViewHelper.PrintReturnMessage($"Supplier {suppler.Name} added successfully with ID {suppler.Id}.");
         }
@@ -146,12 +146,12 @@ namespace BNUStockMate.Controller
         /// completion.</remarks>
         private void DeleteSupplier()
         {
-            var supplier = MenuViewsHelper.ShowSelectableList("Select a supplier to delete", _contactDirectory.Suppliers);
+            var supplier = MenuViewsHelper.ShowSelectableList("Select a supplier to delete", _warehouseSystem.ContactDirectory.Suppliers);
 
             bool confirm = ViewHelper.ShowYesNoPrompt($"Are you sure you want to delete supplier {supplier.Name}?");
             if (confirm)
             {
-                _contactDirectory.RemoveSupplier(supplier);
+                _warehouseSystem.ContactDirectory.RemoveSupplier(supplier);
             }
 
             ViewHelper.PrintReturnMessage($"Supplier {supplier.Name} deleted successfully.");
@@ -165,12 +165,12 @@ namespace BNUStockMate.Controller
         /// is displayed upon completion.</remarks>
         private void DeleteCustomer()
         {
-            var customer = MenuViewsHelper.ShowSelectableList("Select a customer to delete", _contactDirectory.Customers);
+            var customer = MenuViewsHelper.ShowSelectableList("Select a customer to delete", _warehouseSystem.ContactDirectory.Customers);
 
             bool confirm = ViewHelper.ShowYesNoPrompt($"Are you sure you want to delete supplier {customer.Name}?");
             if (confirm)
             {
-                _contactDirectory.RemoveCustomer(customer);
+                _warehouseSystem.ContactDirectory.RemoveCustomer(customer);
             }
 
             ViewHelper.PrintReturnMessage($"Supplier {customer.Name} deleted successfully.");

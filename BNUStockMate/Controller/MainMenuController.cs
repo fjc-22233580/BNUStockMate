@@ -36,10 +36,10 @@ public class MainMenuController
     public MainMenuController()
     {
         var warehouseSystem = new WarehouseSystem();
-        _contactsController = new ContactsController(warehouseSystem.ContactDirectory);
+        _contactsController = new ContactsController(warehouseSystem);
         _inventoryController = new InventoryController(warehouseSystem);
         _orderController = new OrderController(warehouseSystem);
-        _financeController = new FinanceController(warehouseSystem.FinanceManager, warehouseSystem.OrderManager);
+        _financeController = new FinanceController(warehouseSystem);
     }
 
     /// <summary>

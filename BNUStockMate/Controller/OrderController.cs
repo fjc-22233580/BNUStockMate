@@ -127,7 +127,7 @@ public class OrderController
             var item = MenuViewsHelper.ShowSelectableList("Please select an item to add to the PO:",
                 _warehouseSystem.InventoryManager.Inventory);
 
-            int qty = ViewHelper.GetValidatedNumber("Enter required quantity");
+            int qty = ViewHelperValidators.GetValidatedNumber("Enter required quantity");
 
             var orderLine = new PurchaseOrderLine(item, qty);
             poLineItems.Add(orderLine);
