@@ -50,7 +50,7 @@ public class MainMenuController
         // Define the menu options for the main menu.
         var _menuOptions = new List<string>
         {
-            "1. Supplier Management",
+            "1. Customer and Supplier Management",
             "2. Inventory Management",
             "3. Order Processing",
             "4. Finance Management",

@@ -1,5 +1,5 @@
 ﻿using BNUStockMate.Model.Orders.BaseClasses;
-using BNUStockMate.Model.Products;
+using BNUStockMate.Model.Products.BaseClasses;
 
 namespace BNUStockMate.Model.Orders;
 

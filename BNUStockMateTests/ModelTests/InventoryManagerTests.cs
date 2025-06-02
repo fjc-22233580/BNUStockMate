@@ -40,10 +40,11 @@ public class InventoryManagerTests
         inventoryManager.AddProduct(outOfStockProduct);
 
         // Assert
+        // Note this also takes into account the dummy products added in the constructor
         Assert.IsTrue(inventoryManager.InStockInventory.Any(), "InStockInventory should have at least 1 element.");
-        Assert.AreEqual(inventoryManager.InStockProductCount, 1, "Should have 1 product in stock");
-        Assert.AreEqual(inventoryManager.LowStockProductCount, 1, "Should have 1 product with low stock");
-        Assert.AreEqual(inventoryManager.OutOfStockProductCount, 1, "Should have 1 product out of stock");
+        Assert.AreEqual(8, inventoryManager.InStockProductCount, "Should have 1 product in stock");
+        Assert.AreEqual(3, inventoryManager.LowStockProductCount, "Should have 1 product with low stock");
+        Assert.AreEqual(1, inventoryManager.OutOfStockProductCount, "Should have 1 product out of stock");
     }
 
     [TestMethod]
