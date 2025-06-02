@@ -13,7 +13,8 @@ The system features:
 ## Requirements
 
 - Visual Studio - if you configre VS to work with desktop applications then it _should_ work without installing the .net6 SDK - a link below points to the SDK incase it doesn't work.
-- NOte: I chose .net 6 as whilst it our "out-of-support" its the most widely available version.
+- If you wish to run this from VSCode, then you will likely need to install the .net 6 SDK.
+- Note: I chose .net 6 as whilst it our "out-of-support" its the most widely available version.
 - [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ## Running the Application
