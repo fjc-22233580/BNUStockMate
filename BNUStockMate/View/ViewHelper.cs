@@ -1,4 +1,5 @@
 ﻿using BNUStockMate.Model.Enums;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -7,6 +8,7 @@ namespace BNUStockMate.View
     /// <summary>
     /// Provides utility methods for displaying information and interacting with the user via the console.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class ViewHelper
     {
         /// <summary>

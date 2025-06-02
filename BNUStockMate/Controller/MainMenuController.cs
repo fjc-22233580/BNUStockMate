@@ -1,5 +1,6 @@
 ﻿using BNUStockMate.Model;
 using BNUStockMate.View;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BNUStockMate.Controller;
 
@@ -7,6 +8,7 @@ namespace BNUStockMate.Controller;
 /// The MainMenuController class provides a centralized menu for managing various aspects of the warehouse system.
 /// This is the root of the application, allowing users to navigate to different controllers for managing contacts, inventory, orders, and finances.
 /// </summary>
+[ExcludeFromCodeCoverage]
 public class MainMenuController
 {
     /// <summary>

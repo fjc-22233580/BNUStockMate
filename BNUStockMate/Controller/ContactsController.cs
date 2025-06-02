@@ -1,6 +1,7 @@
 ﻿using BNUStockMate.Model;
-using BNUStockMate.View;
 using BNUStockMate.Model.Info;
+using BNUStockMate.View;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BNUStockMate.Controller
 {
@@ -9,6 +10,7 @@ namespace BNUStockMate.Controller
     /// Brings together the contact directory and the view layer to provide a user interface for managing contacts.
     /// Creates a menu for viewing, adding, and deleting suppliers and customers.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class ContactsController
     {
         /// <summary>
