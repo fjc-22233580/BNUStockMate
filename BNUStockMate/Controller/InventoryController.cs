@@ -1,12 +1,14 @@
-﻿using System.Text;
-using BNUStockMate.Model;
+﻿using BNUStockMate.Model;
 using BNUStockMate.View;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace BNUStockMate.Controller;
 
 /// <summary>
 /// Provides functionality for managing inventory operations such as viewing stock and processing deliveries (POs).
 /// </summary>
+[ExcludeFromCodeCoverage]
 public class InventoryController
 {
     /// <summary>

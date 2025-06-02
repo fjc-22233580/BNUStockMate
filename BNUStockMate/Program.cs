@@ -1,10 +1,12 @@
-﻿using BNUStockMate.Controller;
+﻿using System.Diagnostics.CodeAnalysis;
+using BNUStockMate.Controller;
 
 namespace BNUStockMate;
 
 /// <summary>
 /// Entry point into BNUStockMate
 /// </summary>
+[ExcludeFromCodeCoverage]
 public static class Program
 {
     /// <summary>

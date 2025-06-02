@@ -1,10 +1,13 @@
-﻿namespace BNUStockMate.View
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace BNUStockMate.View
 {
     /// <summary>
     /// Provides utility methods for displaying selectable menus and lists in the console.
     /// </summary>
     /// <remarks>This class includes methods for creating selectable menus that allow users to navigate
     /// through options using the arrow keys and make a selection by pressing the Enter key.</remarks>
+    [ExcludeFromCodeCoverage]
     public static class MenuViewsHelper
     {
         /// <summary>

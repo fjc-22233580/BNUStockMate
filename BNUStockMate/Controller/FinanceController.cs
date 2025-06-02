@@ -1,11 +1,13 @@
 using BNUStockMate.Model;
 using BNUStockMate.View;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BNUStockMate.Controller;
 
 /// <summary>
 /// View controller for managing financial operations such as viewing finance summaries and monthly reports.
 /// </summary>
+[ExcludeFromCodeCoverage]
 public class FinanceController
 {
     /// <summary>

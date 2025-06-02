@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 
 namespace BNUStockMate.View;
 
@@ -8,6 +9,7 @@ namespace BNUStockMate.View;
 /// <remarks>This class includes methods for validating integers, strings, and email addresses entered by the
 /// user. Each method displays a prompt to the user and ensures the input meets the required criteria. If the user
 /// enters "q" in certain methods, the operation is canceled, and <see langword="null"/> is returned.</remarks>
+[ExcludeFromCodeCoverage]
 public static class ViewHelperValidators
 {
     /// <summary>

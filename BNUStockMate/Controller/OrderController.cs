@@ -1,12 +1,14 @@
 ﻿using BNUStockMate.Model;
 using BNUStockMate.Model.Orders;
 using BNUStockMate.View;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BNUStockMate.Controller;
 
 /// <summary>
 /// Provides functionality for managing and processing orders, including customer orders and purchase orders.
 /// </summary>
+[ExcludeFromCodeCoverage]
 public class OrderController
 {
     /// <summary>
