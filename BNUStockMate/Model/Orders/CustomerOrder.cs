@@ -48,4 +48,13 @@ public class CustomerOrder : OrderBase
     /// Gets the total cost of all order lines in the current order.
     /// </summary>
     public override double OrderTotal => OrderLines.Sum(o => o.LineTotal);
+
+    /// <summary>
+    /// Returns a string representation of the order, including the order number, customer name, order date, total
+    /// amount, and order state.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Order #{OrderNumber} for {Customer.Name} on {OrderDate.ToShortDateString()} - Total: {OrderTotal:C} - State: {OrderState}";
+    }
 }

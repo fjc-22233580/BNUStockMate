@@ -33,17 +33,21 @@ public class OrderManager
     /// </summary>
     public List<PurchaseOrder> ReceivedOrders => _purchaseOrders.Where(po => !po.IsDelivered).ToList();
 
-    /// <summary>
-    /// Creates a new customer order with the specified customer and list of products.
-    /// </summary>
-    /// <param name="customer">The customer for whom the order is being created.</param>
-    /// <param name="products">The list of products to include in the order. </param>
-    /// <returns>A <see cref="CustomerOrder"/> instance representing the newly created order.</returns>
-    public CustomerOrder CreateCustomerOrder(Customer customer, List<CustomerOrderLine>  products)
+   /// <summary>
+   /// Creates a new customer order with the specified customer, products, and optional order date.
+   /// </summary>
+   /// <param name="customer">The customer for whom the order is being created. Cannot be null.</param>
+   /// <param name="products">A list of products to include in the order. Cannot be null or empty.</param>
+   /// <param name="orderDate">The date of the order. If null, the current date and time will be used - optional for creating dummy data</param>
+   /// <returns>A <see cref="CustomerOrder"/> instance representing the newly created order.</returns>
+    public CustomerOrder CreateCustomerOrder(Customer customer, List<CustomerOrderLine>  products, DateTime? orderDate = null)
     {
         int orderNumber = _customerOrders.Count + 1;
-        var orderDate = DateTime.Now;
-        var customerOrder = new CustomerOrder(orderNumber, customer, orderDate,products);
+        if (orderDate == null)
+        {
+            orderDate = DateTime.Now;
+        }
+        var customerOrder = new CustomerOrder(orderNumber, customer, (DateTime)orderDate, products);
         return customerOrder;
     }
 

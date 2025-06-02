@@ -101,14 +101,12 @@ namespace BNUStockMate.Controller
         /// <summary>
         /// Adds a new suppler to the contact directory.
         /// </summary>
-        /// <remarks>This method prompts the user to enter the suppliers's name, email, and phone number.
+        /// <remarks>This method prompts the user to enter the supplier's name, email, and phone number.
         /// Each input is validated, and if any validation fails, the method exits without adding a customer. If all
         /// inputs are valid, the customer is added to the contact directory, and a confirmation message is
         /// displayed.</remarks>
         private void AddSupplier()
         {
-            // "CompanyA", "email@email.com", "132-123"));
-
             string name = ViewHelperValidators.GetValidatedString("Enter supplier name");
 
             if (name == null)
@@ -146,6 +144,12 @@ namespace BNUStockMate.Controller
         /// completion.</remarks>
         private void DeleteSupplier()
         {
+            if (_warehouseSystem.ContactDirectory.Suppliers.Count == 0)
+            {
+                ViewHelper.PrintReturnMessage("No suppliers available to delete.");
+                return;
+            }
+
             var supplier = MenuViewsHelper.ShowSelectableList("Select a supplier to delete", _warehouseSystem.ContactDirectory.Suppliers);
 
             bool confirm = ViewHelper.ShowYesNoPrompt($"Are you sure you want to delete supplier {supplier.Name}?");
@@ -165,6 +169,12 @@ namespace BNUStockMate.Controller
         /// is displayed upon completion.</remarks>
         private void DeleteCustomer()
         {
+            if (_warehouseSystem.ContactDirectory.Customers.Count == 0)
+            {
+                ViewHelper.PrintReturnMessage("No customers available to delete.");
+                return;
+            }
+
             var customer = MenuViewsHelper.ShowSelectableList("Select a customer to delete", _warehouseSystem.ContactDirectory.Customers);
 
             bool confirm = ViewHelper.ShowYesNoPrompt($"Are you sure you want to delete supplier {customer.Name}?");

@@ -20,6 +20,6 @@ public class Customer
 
     public override string ToString()
     {
-        return $"{Id} - {_name} - {_email} - {_phone}";
+        return $"ID: {Id} - {_name} - {_email} - {_phone}";
     }
 }

@@ -21,6 +21,6 @@ public class Supplier
 
     public override string ToString()
     {
-        return $"{_id} - {_name} - {_email} - {_phone}";
+        return $"ID: {_id} - {_name} - {_email} - {_phone}";
     }
 }

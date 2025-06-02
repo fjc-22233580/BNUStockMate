@@ -41,4 +41,13 @@ public class PurchaseOrder : OrderBase
     /// Gets the total cost of the order, calculated as the sum of all line item totals.
     /// </summary>
     public override double OrderTotal => OrderLines.Sum(o => o.LineTotal);
+
+    /// <summary>
+    /// Returns a string representation of the purchase order, including its order number, supplier name, order date,
+    /// total amount, and delivery status.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Purchase Order #{OrderNumber} from {Supplier.Name} on {OrderDate.ToShortDateString()} - Total: {OrderTotal:C} - Delivered: {IsDelivered}";
+    }
 }

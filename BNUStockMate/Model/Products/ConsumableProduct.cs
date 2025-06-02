@@ -1,3 +1,5 @@
+using BNUStockMate.Model.Products.BaseClasses;
+
 namespace BNUStockMate.Model.Products;
 
 /// <summary>

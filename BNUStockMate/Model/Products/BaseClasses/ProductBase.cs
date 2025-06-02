@@ -1,4 +1,4 @@
-namespace BNUStockMate.Model.Products;
+namespace BNUStockMate.Model.Products.BaseClasses;
 
 /// <summary>
 /// Represents the base class for a product, providing common properties and functionality for managing product
@@ -91,6 +91,20 @@ public abstract class ProductBase
     /// </summary>
     public override string ToString()
     {
-        return $"{Name} | {Description}";
+        string type = string.Empty;
+        switch (this)
+        {
+            case ConsumableProduct:
+                type = "Consumable Product";
+                break;
+            case HazardousProduct:
+                type = "Hazardous Product";
+                break;
+            case StandardProduct:
+                type = "Standard Product";
+                break;
+        }
+
+        return $"ID: {Sku} | Type: {type} |Product: {Name} | Description: {Description} | Stock: {Quantity}";
     }
 }

@@ -16,10 +16,17 @@ namespace BNUStockMate.View
         /// associated amount.</param>
         public static void PrintReport(Dictionary<string, double> report)
         {
+            Console.Clear();
+
             foreach (var entry in report)
             {
-                Console.WriteLine($"{entry.Key}: {entry.Value:C}");
+                string line = $"{entry.Key}: {entry.Value:C}";
+                PrintLine(line);
             }
+
+            PrintLine("Press any key to continue...");
+            Console.ReadKey(true);
+
         }
 
         /// <summary>

@@ -31,6 +31,68 @@ public class WarehouseSystem
     public OrderManager OrderManager { get; } = new OrderManager();
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="WarehouseSystem"/> class.
+    /// </summary>
+    /// <remarks>This constructor sets up the warehouse system and populates it with initial dummy orders for
+    /// testing or demonstration purposes.</remarks>
+    public WarehouseSystem()
+    {
+        AddDummyOrders();
+    }
+
+    /// <summary>
+    /// Generates and adds dummy customer and supplier orders for testing or demonstration purposes.
+    /// </summary>
+    private void AddDummyOrders()
+    {
+        // Create dummy customer orders for each customer in the contact directory.
+        foreach (var customer in ContactDirectory.Customers)
+        {
+            var orderLines = new List<CustomerOrderLine>();
+
+            // Use only in-stock inventory items to create customer orders - otherwise you can create negative stock levels!
+            InventoryManager.InStockInventory.ForEach(item =>
+            {
+                int qty = new Random().Next(1, 21);
+                var orderLine = new CustomerOrderLine(item, qty);
+                orderLines.Add(orderLine);
+            });
+
+            var randomDate = GenerateRandomPastDateTime();
+            var order = OrderManager.CreateCustomerOrder(customer, orderLines, randomDate);
+            ConfirmCustomerOrder(order);
+        }
+
+        // Create dummy purchase orders for each supplier in the contact directory.
+        foreach (var supplier in ContactDirectory.Suppliers)
+        {
+            var orderLines = new List<PurchaseOrderLine>();
+            InventoryManager.Inventory.ForEach(item =>
+            {
+                int qty = new Random().Next(1, 21);
+                var orderLine = new PurchaseOrderLine(item, qty);
+                orderLines.Add(orderLine);
+            });
+
+            OrderManager.CreatePurchaseOrder(supplier, orderLines);
+        }
+    }
+
+    /// <summary>
+    /// Generates a random <see cref="DateTime"/> value within the past year.
+    /// </summary>
+    public DateTime GenerateRandomPastDateTime()
+    {
+        var rng = new Random();
+        DateTime start = DateTime.Today.AddYears(-1);
+        int daysBack = rng.Next(1, 366); // 1 to 365 days ago
+        int hours = rng.Next(0, 24);
+        int minutes = rng.Next(0, 60);
+
+        return start.AddDays(daysBack).AddHours(hours).AddMinutes(minutes);
+    }
+
+    /// <summary>
     /// Confirms a customer order by processing it, shipping the order, and recording the sale.
     /// </summary>
     /// <param name="order">The customer order to confirm. </param>

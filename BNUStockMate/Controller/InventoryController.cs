@@ -35,8 +35,7 @@ public class InventoryController
             "1. View stock summary",
             "2. View all in-stock inventory",
             "3. View all products",
-            "4. Process deliveries",
-            "5. Return to previous menu"
+            "4. Return to previous menu"
         };
 
         // Loop until the user chooses a child option or to exit the previous menu.
@@ -49,37 +48,11 @@ public class InventoryController
                 case 0: ViewStockSummary(); break;
                 case 1: ViewHelper.PrintList("All in stock inventory", _warehouseSystem.InventoryManager.InStockInventory); break;
                 case 2: ViewHelper.PrintList("All inventory", _warehouseSystem.InventoryManager.Inventory); break;
-                case 3: ProcessDeliveries(); break;
-                case 4: running = false; break; // Back to Main Menu
+                case 3: running = false; break; // Back to Main Menu
             }
         }
     }
 
-    /// <summary>
-    /// Processes received purchase orders by interacting with the warehouse system.
-    /// </summary>
-    /// <remarks>This method allows the user to select and process purchase orders from the list of received
-    /// orders. If there are no orders to process, a message is displayed to the user. The user is prompted to decide
-    /// whether to process additional orders after each operation.</remarks>
-    private void ProcessDeliveries()
-    {
-        bool running = true;
-        while (running)
-        {
-            if (_warehouseSystem.OrderManager.ReceivedOrders.Count > 0)
-            {
-                var po = MenuViewsHelper.ShowSelectableList("Deliveries", _warehouseSystem.OrderManager.ReceivedOrders);
-                _warehouseSystem.ReceivePurchaseOrder(po);
-                running = ViewHelper.ShowYesNoPrompt("Process another order?");
-            }
-            else
-            {
-                running = false;
-            }
-        }
-
-        ViewHelper.PrintReturnMessage("No orders to process!");
-    }
 
     /// <summary>
     /// Displays a summary of the current stock levels, including counts of items in stock, low stock, and out of stock.

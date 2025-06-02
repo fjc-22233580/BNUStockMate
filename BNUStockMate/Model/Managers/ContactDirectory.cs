@@ -23,10 +23,29 @@ public class ContactDirectory
     /// </summary>
     public ContactDirectory()
     {
-        _suppliers.Add(new Supplier(123, "CompanyA", "email@email.com", "132-123"));
-        _suppliers.Add(new Supplier(456, "CompanyB", "email@email.com", "7896-57"));
-        _customers.Add(new Customer(789, "BNU", "bnu@bnu.com", "789-657"));
-        _customers.Add(new Customer(5686, "Burger King", "info@BK.com", "4532-657"));
+        CreateDummyData();
+    }
+
+    /// <summary>
+    /// Populates the internal collections with sample supplier and customer data.
+    /// </summary>
+    private void CreateDummyData()
+    {
+        // Suppliers (ID, Name, Email, Contact)
+        _suppliers.Add(new Supplier(1, "CompanyA", "email@email.com", "132-123"));
+        _suppliers.Add(new Supplier(2, "CompanyB", "email@email.com", "7896-57"));
+        _suppliers.Add(new Supplier(3, "Tools R Us", "contact@toolsrus.com", "020-7946-0021"));
+        _suppliers.Add(new Supplier(4, "HeavyLoad Ltd", "orders@heavyload.co.uk", "0117-654-3000"));
+        _suppliers.Add(new Supplier(5, "FastTrack Supplies", "sales@fasttrack.com", "0161-234-9999"));
+        _suppliers.Add(new Supplier(6, "LogiParts Inc", "support@logiparts.com", "0845-890-1234"));
+
+        // Customers (ID, Name, Email, Contact)
+        _customers.Add(new Customer(1, "BNU", "bnu@bnu.com", "789-657"));
+        _customers.Add(new Customer(2, "Burger King", "info@BK.com", "4532-657"));
+        _customers.Add(new Customer(3, "QuickBuild Co.", "admin@quickbuild.com", "07823-456789"));
+        _customers.Add(new Customer(4, "Urban Housing", "contact@urbanhousing.org", "020-9988-7766"));
+        _customers.Add(new Customer(5, "Premier Motors", "dealer@premiermotors.com", "01782-334422"));
+        _customers.Add(new Customer(6, "Fresh Logistics", "ops@freshlogistics.com", "0191-332-1212"));
     }
 
     /// <summary>
