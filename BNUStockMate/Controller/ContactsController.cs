@@ -39,8 +39,8 @@ namespace BNUStockMate.Controller
                 "2. View Customers",
                 "3. Add Supplier",
                 "4. Delete Supplier",
-                "5. Add Supplier",
-                "6. Delete Supplier",
+                "5. Add Customer",
+                "6. Delete Customer",
                 "5. Back to Main Menu"
             };
 
